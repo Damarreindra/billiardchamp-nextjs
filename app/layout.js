@@ -1,5 +1,7 @@
 import localFont from "next/font/local";
 import "./globals.css";
+import Provider from "@/components/Provider/Provider";
+import { ReduxProvider } from "@/lib/redux/provider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -20,10 +22,20 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+   {/* <head>
+   <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
+
+   </head> */}
+
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <ReduxProvider>
+        <Provider>
         {children}
+        </Provider>
+        </ReduxProvider>
+        <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
       </body>
     </html>
   );
